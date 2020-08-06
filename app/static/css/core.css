@@ -1,0 +1,89 @@
+/* 
+//  CORE (core.css) styling for bloc-styling
+//  This contains all of the base-level styling for the system
+//  fonts > root.css > CORE > ui.css > OTHER
+//  More information: https://www.benfd.uk/projects/bloc-styling
+*/
+
+/* Primal Elements */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* Color */
+    color: var(--primary-font-color);
+    background: var(--primary-bgcolor);
+    /* Text */
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
+    color: var(--primary-link-color);
+    font-weight: bold;
+}
+a:hover{
+    color: var(--secondary-link-color);
+}
+::selection{
+    color: var(--primary-font-color);
+    background-color: var(--primary-selection-color);
+}
+ 
+/* Grids && Flexbox */
+
+#__app_outer{
+    display: grid;
+    grid-template-areas: 
+        'header header'
+        'sidebar main';
+    grid-template-columns: 2fr 8fr;
+}
+#__app_header_outer{
+    grid-area: header;
+}
+#__app_sidebar_outer{
+    grid-area: sidebar;
+}
+#app_sidebar__nav{
+    justify-self: stretch;
+}
+#__app_main_outer{
+    grid-area: main;
+}
+
+.bloc-container--flex{
+    display: flex;
+}
+
+/* Element sizing && spacing */
+
+.bloc-cell--10pc{
+    width: 10%;
+}
+.bloc-cell--20pc{
+    width: 20%;
+}
+.bloc-cell--30pc{
+    width: 30%;
+}
+.bloc-cell--40pc{
+    width: 40%;
+}
+.bloc-cell--50pc{
+    width: 50%;
+}
+.bloc-cell--60pc{
+    width: 60%;
+}
+.bloc-cell--70pc{
+    width: 70%;
+}
+.bloc-cell--80pc{
+    width: 80%;
+}
+.bloc-cell--90pc{
+    width: 90%;
+}

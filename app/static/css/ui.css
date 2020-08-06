@@ -1,0 +1,75 @@
+/* 
+//  USER INTERFACE (ui.css) styling for blo-styling
+//  This contains user interface styling for the system
+//  fonts > root.css > core.css > USER INTERFACE > OTHER
+//  More information: https://www.benfd.uk/projects/bloc-styling
+*/
+
+/* MATERIAL ICONS */
+
+.md-18{ font-size: 18px; }
+.md-24{ font-size: 24px; }
+.md-36{ font-size: 36px; }
+
+/* Header/Sidebar && Navigation */
+
+header{
+    color: var(--primary-brand-color);
+    background: var(--header-bgcolor);
+}
+header > div > h1{
+    padding: 15px 20px;
+}
+nav#app_header__nav{
+    justify-content: right;
+}
+
+aside{
+    height: calc(100vh - 75px);
+    color: var(--primary-brand-color);
+    background: var(--sidebar-bgcolor);
+}
+
+/* Header navigation */
+
+.bloc-hn-block{
+    color: var(--primary-brand-color);
+    padding: 20px 20px;
+    height: 35px;
+}
+.hn-last{
+    padding: 25px 20px;
+    height: 25px;
+}
+.bloc-hn-block:hover{
+    background: var(--navigation-primary);
+}
+
+/* Sidebar navigation */
+
+.bloc-sbn-block{
+    padding: 20px 0;
+    height: 20px;
+    color: var(--primary-font-color);
+    text-align: center;
+}
+.bloc-sbn-block:hover, .sbn-active{
+    background: var(--navigation-secondary);
+}
+
+.bloc-sbn-sub-block{
+    background: var(--navigation-sub);
+}
+
+/* Primary Content */
+
+#app_main__inner{
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* OTHER */
+
+.bloc-hidden{
+    display: none;
+}

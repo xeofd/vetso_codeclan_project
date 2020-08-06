@@ -1,0 +1,35 @@
+/* 
+//  ROOT (root.css) styling for bloc-styling
+//  This contains root variables for colour & fonts for the system
+//  fonts > ROOT > core.css > ui.css > OTHER
+//  More information: https://www.benfd.uk/projects/bloc-styling
+*/
+
+/* root{} */
+
+:root{
+    /* Primary design colors */
+    --primary-font-color: rgb(43, 43, 43);
+    --primary-link-color: rgb(68, 138, 255);
+    --primary-brand-color: rgb(183, 28, 28);
+    --primary-selection-color: rgb(100, 181, 246);
+    --primary-bgcolor: rgb(218, 218, 218);
+    --header-bgcolor: rgb(46, 46, 46);
+    --sidebar-bgcolor: rgb(187, 187, 187);
+    /* Secondary design colors */
+    --secondary-font-color: rgb(255, 255, 255);
+    --secondary-link-color: rgb(41, 98, 255);
+    --secondary-brand-color: rgb(229, 57, 53);
+    /* Special colors */
+    --box-shadow: rgb(61, 61, 61);
+    --navigation-primary: rgb(65, 65, 65);
+    --navigation-secondary: rgb(134, 134, 134);
+    --navigation-sub: rgb(160, 160, 160);
+    /* status colors */
+    --status-error: rgb(211, 47, 47);
+    --status-warning: rgb(255, 167, 38);
+    --status-success: rgb(76, 175, 80);
+    /* Font families */
+    --primary-font-family: 'Roboto', sans-serif;
+    /* Special variables */
+}
