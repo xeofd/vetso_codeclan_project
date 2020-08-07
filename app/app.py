@@ -1,5 +1,5 @@
 # Import required modules
-from flask import Flask, render_template
+from flask import Flask, Blueprint, render_template
 
 # Create the flask app
 app = Flask(__name__)
