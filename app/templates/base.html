@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- META TAGS -->
+    <title>{{ title }} - Vetso</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='images/favicon.ico') }}" rel="icon" />
+    <!-- LINKED FILES -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/root.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/core.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/ui.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- START APP -->
+    <div id="__app_outer">
+
+        <!-- START HEADER -->
+        <header class="bloc-container--flex" id="__app_header_outer">
+
+            <div class="bloc-cell--50pc" id="app_header__logo">
+
+                <h1>Vetso</h1>
+
+            </div>
+
+            <nav class="bloc-cell--50pc bloc-container--flex" id="app_header__nav">
+
+                <a href="/"><div class="bloc-hn-block">
+                    <p><span class="material-icons md-36">home</span></p>
+                </div></a>
+
+            </nav> 
+
+        </header>
+        <!-- END HEADER -->
+
+        <!-- START SIDEBAR -->
+        <aside id="__app_sidebar_outer">
+
+            <nav id="app_sidebar__nav">
+
+                <div class="bloc-snb-top">
+                    <p>Animals</p>
+                </div>
+
+                <div class="bloc-sbn-sub-block">
+
+                    <a href="/hardware"><div class="bloc-sbn-block">
+                        <p>Animals in care</p>
+                    </div></a>
+
+                    <a href="/hardware"><div class="bloc-sbn-block">
+                        <p>View all animals</p>
+                    </div></a>
+
+                    <a href="/hardware/add"><div class="bloc-sbn-block">
+                        <p>Add an animal</p>
+                    </div></a>
+
+                </div>
+
+                <div class="bloc-snb-top">
+                    <p>Owners</p>
+                </div>
+
+                <div class="bloc-sbn-sub-block">
+
+                    <a href="/software"><div class="bloc-sbn-block">
+                        <p>View all owners</p>
+                    </div></a>
+
+                    <a href="/software/add"><div class="bloc-sbn-block">
+                        <p>Add an owner</p>
+                    </div></a>
+
+                </div>
+
+                <div class="bloc-snb-top">
+                    <p>Vets</p>
+                </div>
+
+                <div class="bloc-sbn-sub-block">
+
+                    <a href="/settings/users"><div class="bloc-sbn-block">
+                        <p>View vet schedules</p>
+                    </div></a>
+
+                    <a href="/settings/users"><div class="bloc-sbn-block">
+                        <p>View all vets</p>
+                    </div></a>
+
+                    <a href="/settings"><div class="bloc-sbn-block">
+                        <p>Add a vet</p>
+                    </div></a>
+
+                </div>
+
+
+            </nav>
+
+            <footer id="app_sidebar__footer">
+
+            </footer>
+
+        </aside>
+        <!-- END SIDEBAR -->
+
+        <!-- START MAIN -->
+        <main id="__app_main_outer">
+
+            <div id="app_main__inner">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+        </main>
+        <!-- END MAIN-->
+
+    </div>
+
+    <!-- END APP -->
+    
+</body>
+
+</html>

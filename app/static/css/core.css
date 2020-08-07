@@ -58,6 +58,28 @@ a:hover{
     display: flex;
 }
 
+/* Tables && data display */
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--data-display-background);
+}
+.bloc-table--row-head > td{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bloc-table--row-body > td{
+    padding: 15px 10px;
+    border-top: 1px solid var(--primary-brand-color);
+}
+.bloc-table--row-body:hover{
+    background: var(--navigation-sub);
+    cursor: pointer;
+}
+
 /* Element sizing && spacing */
 
 .bloc-cell--10pc{
