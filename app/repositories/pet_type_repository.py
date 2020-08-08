@@ -29,7 +29,7 @@ def select_all():
 
     # Loop through all the results and append the objects to a list
     for row in results:
-        # Create new pet object && append to pets list
+        # Create new pet type and append it to the list
         new_pet_type = PetType(row['type'], row['breed'], row['id'])
         pet_types.append(new_pet_type)
 
@@ -51,7 +51,7 @@ def select(type_id):
     return pet_type
 
 # FUNCTION: delete(item_id)
-# This function
+# This function is used to delete a specific item from the database using its id
 def delete(type_id):
     # Create the SQL query, pass in the data and run it
     sql = "DELETE FROM pet_type WHERE id = %s"
