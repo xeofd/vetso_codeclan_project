@@ -30,12 +30,12 @@ def select_all():
     # Loop through the data
     for row in results:
         # Create new owner object and append it to the list
-        new_owner = Owner(row['first_name'], row['last_name'], row['email_address'], row['contact_number'], row['address'], row['post_code'], row['city'], row['registered'])
+        new_owner = Owner(row['first_name'], row['last_name'], row['email_address'], row['contact_number'], row['address'], row['post_code'], row['city'], row['registered'], row['id'])
         owners.append(new_owner)
 
 # FUNCTION: select(item_id)
-# This function is used to select a specific pet type by its ID in the database to be able to create an object
-# that can be passed into the Pets object
+# This function is used to select a specific owner by the ID in the database to be able to create an object
+# that can be displayed
 def select(owner_id):
     # Create the SQL query, pass in the data and run it
     sql = "SELECT * FROM owner WHERE id = %s"
@@ -44,7 +44,7 @@ def select(owner_id):
 
     # Create object if data is found in the database
     if len(result) > 0:
-        new_owner = Owner(result[0]['first_name'], result[0]['last_name'], result[0]['email_address'], result[0]['contact_number'], result[0]['address'], result[0]['post_code'], result[0]['city'], result[0]['registered'])
+        new_owner = Owner(result[0]['first_name'], result[0]['last_name'], result[0]['email_address'], result[0]['contact_number'], result[0]['address'], result[0]['post_code'], result[0]['city'], result[0]['registered'], result[0]['id'])
     
     return new_owner
 

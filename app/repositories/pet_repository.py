@@ -42,5 +42,26 @@ def select_all():
     return pets
 
 # FUNCTION: select(item_id)
+# This function is used to select a specific pet by its ID in the database to be able to create an object
+# that can be displayed
+def select(pet_id):
+    # Create the SQL query, pass in the data and run it
+    sql = "SELECT * FROM pet WHERE id = %s"
+    values = [pet_id]
+    result = run_sql(sql, values)
+
+    # Create object if data is found in the database
+    if len(result) > 0:
+        pet_type = PTR.select(result['type_id'])
+        owner = OR.select(result['owner_id'])
+        new_pet = Pet(result[0]['name'], result[0]['dob'], owner, pet_type)
+    
+    return new_pet
 
 # FUNCTION: delete(item_id)
+# This function is used to delete a specific item from the database using its id
+def delete(pet_id):
+    # Create the SQL query, pass in the data and run it
+    sql = "DELETE FROM pet WHERE id = %s"
+    values = [pet_id]
+    run_sql(sql, values)
