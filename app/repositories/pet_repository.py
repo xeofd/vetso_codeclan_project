@@ -65,3 +65,18 @@ def delete(pet_id):
     sql = "DELETE FROM pet WHERE id = %s"
     values = [pet_id]
     run_sql(sql, values)
+
+# FUNCTION: delete_all()
+# This function is used to delete all data from the table that coresponds to the class it is run from
+def delete_all():
+    # Create SQL query and run it
+    sql = "DELETE FROM pet"
+    run_sql(sql)
+
+# FUNCTION: update(item_id)
+# This function is used to update data within the database
+def update(pet):
+    # Create SQL query, pass in the data and run it
+    sql = "UPDATE pet SET (name, dob, owner_id, type_id) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [pet.name, pet.dob, pet.owner.id, pet.type.id, pet.id]
+    run_sql(sql, values)

@@ -65,3 +65,10 @@ def update(vet):
     sql = "UPDATE vet SET (first_name, last_name) = (%s, %s) WHERE id = %s"
     values = [vet.first_name, vet.last_name, vet.id]
     run_sql(sql, values)
+
+# FUNCTION: delete_all()
+# This function is used to delete all data from the table that coresponds to the class it is run from
+def delete_all():
+    # Create SQL query and run it
+    sql = "DELETE FROM vet"
+    run_sql(sql)
