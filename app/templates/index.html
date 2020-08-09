@@ -1,6 +1,125 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Homepage content will be displayed here</h1>
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Pets</h2>
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr class="bloc-table--row-head">
+                <td>Name</td>
+                <td>Date of Birth</td>
+                <td>Animal Type</td>
+                <td>Owners Name</td>
+                <td>Regular Vet</td>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for pet in pets %}
+
+            <tr class="bloc-table--row-body">
+                <td>{{ pet.name }}</td>
+                <td>{{ pet.dob }}</td>
+                <td>{{ pet.pet_type.type }}, {{ pet.pet_type.breed }}</td>
+                <td>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</td>
+                <td>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</td>
+                <td><a href="/pets/{{ pet.id }}">More info</a></td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--50pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--title">
+            <h2>Vets</h2>
+        </div>
+
+        <table>
+    
+            <thead>
+    
+                <tr class="bloc-table--row-head">
+                    <td>Name</td>
+                </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                {% for vet in vets %}
+    
+                <tr class="bloc-table--row-body">
+                    <td>{{ vet.first_name }} {{ vet.last_name }}</td>
+                    <td><a href="/vets/{{ vet.id }}">More info</a></td>
+                </tr>
+    
+                {% endfor %}
+    
+            </tbody>
+    
+        </table>
+    
+
+    </div>
+
+    <div class="bloc-cell--50pc bloc-content">
+
+        <div class="bloc-content--title">
+            <h2>Owners</h2>
+        </div>
+
+        <table>
+    
+            <thead>
+    
+                <tr class="bloc-table--row-head">
+                    <td>Name</td>
+                    <td>Phone Number</td>
+                    <td>Currently Registered</td>
+                </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                {% for owner in owners %}
+    
+                <tr class="bloc-table--row-body">
+                    <td>{{ owner.first_name }} {{ owner.last_name }}</td>
+                    <td>{{ owner.contact_number }}</td>
+                    <td>{% if owner.registered == True %}
+                        <p>Yes</p>
+                        {% else %}
+                        <p>No</p>
+                        {% endif %}
+                    </td>
+                    <td><a href="/owners/{{ owner.id }}">More info</a></td>
+                </tr>
+    
+                {% endfor %}
+    
+            </tbody>
+    
+        </table>    
+
+    </div>
+
+</div>
 
 {% endblock %}

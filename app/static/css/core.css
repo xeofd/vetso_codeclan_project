@@ -52,6 +52,8 @@ a:hover{
 }
 #__app_main_outer{
     grid-area: main;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .bloc-container--flex{
@@ -82,6 +84,9 @@ table{
 
 /* Element sizing && spacing */
 
+.bloc-cell--breaker{
+    padding-right: 20px;
+}
 .bloc-cell--10pc{
     width: 10%;
 }

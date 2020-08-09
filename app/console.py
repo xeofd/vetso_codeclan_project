@@ -56,5 +56,10 @@ PR.save(pet_1)
 pet_2 = Pet('KitKat', '1/1/2010', owner_1, pet_type_3, vet_1)
 PR.save(pet_2)
 
-pet_3 = Pet('Steven', '03/10/04', owner_3, pet_type_5, vet_2)
+pet_3 = Pet('Steven', '03/10/2004', owner_3, pet_type_5, vet_2)
 PR.save(pet_3)
+
+# Notes
+
+note_1 = Note('09/08/2020', 'Hudini is a stinky boy', pet_1, vet_1)
+NR.save(note_1)

@@ -78,6 +78,17 @@ aside{
     margin: 20px auto;
 }
 
+.bloc-content{
+    margin: 0 0 20px 0;
+}
+
+.bloc-content--title{
+    padding: 10px;
+    background: var(--primary-brand-color);
+    color: var(--secondary-font-color);
+}
+
+
 /* OTHER */
 
 .bloc-hidden{
