@@ -17,7 +17,7 @@ def save(owner):
     owner.id = id
 
 # FUNCTION: select_all()
-# This function is used to select all of the pets from the database and create python objects
+# This function is used to select all of the owners from the database and create python objects
 # using the data so they can be displayed
 def select_all():
     # Create empty list to hold objects
@@ -32,6 +32,8 @@ def select_all():
         # Create new owner object and append it to the list
         new_owner = Owner(row['first_name'], row['last_name'], row['email_address'], row['contact_number'], row['address'], row['post_code'], row['city'], row['registered'], row['id'])
         owners.append(new_owner)
+
+    return owners
 
 # FUNCTION: select(item_id)
 # This function is used to select a specific owner by the ID in the database to be able to create an object

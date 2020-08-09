@@ -52,8 +52,8 @@ def select(pet_id):
 
     # Create object if data is found in the database
     if len(result) > 0:
-        pet_type = PTR.select(result['type_id'])
-        owner = OR.select(result['owner_id'])
+        pet_type = PTR.select(result[0]['type_id'])
+        owner = OR.select(result[0]['owner_id'])
         new_pet = Pet(result[0]['name'], result[0]['dob'], owner, pet_type)
     
     return new_pet
