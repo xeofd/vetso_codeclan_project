@@ -62,7 +62,7 @@
                 </div>
 
                 <div>
-                    <select name="pet_type" id="pet_type">
+                    <select name="pet_owner" id="pet_type">
                         {% for owner in owners %}
                         <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
                         {% endfor %}
@@ -82,7 +82,7 @@
                 </div>
 
                 <div>
-                    <select name="pet_type" id="pet_type">
+                    <select name="pet_vet" id="pet_type">
                         {% for vet in vets %}
                         <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
                         {% endfor %}

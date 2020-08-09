@@ -30,7 +30,7 @@ def select_all():
     # Loop through the data
     for row in results:
         # Create new vet object and append it to the list
-        new_vet = Vet(row['first_name'], row['last_name'])
+        new_vet = Vet(row['first_name'], row['last_name'], row['id'])
         vets.append(new_vet)
 
     return vets
