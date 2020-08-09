@@ -51,6 +51,8 @@ a:hover{
     justify-self: stretch;
 }
 #__app_main_outer{
+    height: calc(100vh - 75px);
+    overflow-y: scroll;
     grid-area: main;
 }
 

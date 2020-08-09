@@ -136,7 +136,7 @@ form{
     font-weight: bold;
 }
 
-input, select{
+input, select, textarea{
     width: 96%;
     padding: 15px 10px;
     font-family: var(--primary-font-family);
@@ -148,6 +148,13 @@ input[type=submit], select{
 }
 input:focus, select:focus{
     border: 3px solid var(--primary-brand-color);
+}
+
+textarea{
+    min-width: 97%;
+    max-width: 97%;
+    min-height: 280px;
+    max-height: 600px;
 }
 
 .bloc-button--large-button{

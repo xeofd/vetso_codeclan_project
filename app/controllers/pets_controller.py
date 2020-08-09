@@ -1,6 +1,6 @@
 # Import required modules
 from flask import Flask, Blueprint, render_template, redirect, request
-from models.classes import Pet
+from models.classes import Pet, Note
 import repositories.pet_repository as PR
 import repositories.vet_repository as VR
 import repositories.owner_repository as OR
@@ -111,3 +111,21 @@ def add_note(id):
 
     # Render the page
     return render_template('pets/add-note.html', title='Add Pet', pet=pet, vets=vets)
+
+# SAVE NOTE
+@pets_blueprint.route('/pets/<id>/add-note', methods=['POST'])
+def save_note(id):
+    note_date = request.form['note_date']
+    note_text = request.form['note_text']
+    vet_id = request.form['note_vet']
+
+    # Grab the data for the object
+    pet = PR.select(id)
+    vet = VR.select(vet_id)
+
+    # Create the note object for saving
+    note = Note(note_date, note_text, pet, vet)
+    NR.save(note)
+
+    # Redirect
+    return redirect('/pets')

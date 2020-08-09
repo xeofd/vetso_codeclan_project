@@ -26,11 +26,11 @@
             <div class="bloc-cell--50pc">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Pet date of birth</label>
+                    <label for="pet_dob">Pet date of birth</label>
                 </div>
 
                 <div>
-                    <input type="date" name="pet_age" id="pet_name" placeholder="Pets Name" />
+                    <input type="date" name="pet_age" id="pet_dob" placeholder="Pets Name" />
                 </div>
 
             </div>
@@ -42,7 +42,7 @@
             <div class="bloc-cell--50pc bloc-cell--breaker">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Pet type</label>
+                    <label for="pet_type">Pet type</label>
                 </div>
 
                 <div>
@@ -58,11 +58,11 @@
             <div class="bloc-cell--50pc">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Pet owner</label>
+                    <label for="pet_owner">Pet owner</label>
                 </div>
 
                 <div>
-                    <select name="pet_owner" id="pet_type">
+                    <select name="pet_owner" id="pet_owner">
                         {% for owner in owners %}
                         <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
                         {% endfor %}
@@ -78,11 +78,11 @@
             <div class="bloc-cell--50pc bloc-cell--breaker">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Regular vet</label>
+                    <label for="pet_vet">Primary vet</label>
                 </div>
 
                 <div>
-                    <select name="pet_vet" id="pet_type">
+                    <select name="pet_vet" id="pet_vet">
                         {% for vet in vets %}
                         <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
                         {% endfor %}

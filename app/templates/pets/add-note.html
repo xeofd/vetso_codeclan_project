@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add note to {{ pet.name }}</h2>
+    </div>
+
+    <form action="/pets/{{ pet.id }}/add-note" method="POST" class="bloc-container--flex">
+
+        <div class="bloc-cell--50pc bloc-cell--breaker bloc-content">
+
+            <textarea name="note_text"></textarea>
+
+        </div>
+
+        <div class="bloc-cell--50pc bloc-content">
+
+            <div class="bloc-content">
+
+                <div class="bloc-form--label">
+                    <label for="note_date">Written on</label>
+                </div>
+
+                <div>
+                    <input type="date" name="note_date" id="note_date" />
+                </div>
+
+            </div>
+
+            <div class="bloc-content">
+
+                <div class="bloc-form--label">
+                    <label for="note_vet">Written by</label>
+                </div>
+
+                <div>
+                    <select name="note_vet" id="note_vet">
+                        {% for vet in vets %}
+                        <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div>
+
+                <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add note" />
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
