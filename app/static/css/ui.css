@@ -88,6 +88,52 @@ aside{
     color: var(--secondary-font-color);
 }
 
+/* Inputs, buttons && forms */
+
+form{
+    margin: 20px 0;
+}
+
+.bloc-form--label{
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input, select{
+    width: 96%;
+    padding: 15px 10px;
+    font-family: var(--primary-font-family);
+    font-size: 20px;
+    border: 3px solid transparent;
+}
+input[type=submit], select{
+    width: 100%;
+}
+input:focus, select:focus{
+    border: 3px solid var(--primary-brand-color);
+}
+
+.bloc-button--large-button{
+    height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+}
+.bloc-button--large-button-div{
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.bloc-button--type-dark{
+    background: var(--header-bgcolor);
+    color: var(--primary-brand-color);
+}
+.bloc-button--type-dark:hover{
+    background: var(--primary-brand-color);
+    color: var(--primary-font-color);
+    cursor: pointer;
+}
 
 /* OTHER */
 

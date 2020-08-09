@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--title">
+            <h2>Pets</h2>
+        </div>
+    
+        <table>
+    
+            <thead>
+    
+                <tr class="bloc-table--row-head">
+                    <td>Name</td>
+                    <td>Date of Birth</td>
+                    <td>Animal Type</td>
+                    <td>Owners Name</td>
+                    <td>Regular Vet</td>
+                </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                {% for pet in pets %}
+    
+                <tr class="bloc-table--row-body">
+                    <td>{{ pet.name }}</td>
+                    <td>{{ pet.dob }}</td>
+                    <td>{{ pet.pet_type.type }}, {{ pet.pet_type.breed }}</td>
+                    <td>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</td>
+                    <td>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</td>
+                    <td><a href="/pets/{{ pet.id }}">More info</a></td>
+                </tr>
+    
+                {% endfor %}
+    
+            </tbody>
+    
+        </table>
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/pets/add"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Add a pet</p>
+        </div></a>
+
+    </div>
+
+</div>
+
+{% endblock %}

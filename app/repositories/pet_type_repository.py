@@ -24,7 +24,7 @@ def select_all():
     pet_types = []
 
     # Create the SQL query && input data before running it
-    sql = "SELECT * FROM pet"
+    sql = "SELECT * FROM pet_type"
     results = run_sql(sql)
 
     # Loop through all the results and append the objects to a list
