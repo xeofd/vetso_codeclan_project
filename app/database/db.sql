@@ -34,6 +34,15 @@ CREATE TABLE owner(
     registered BOOLEAN NOT NULL
 );
 
+-- VET
+-- This table holds data about vets who work in the 
+-- practice, contains only the vets name ATM.
+CREATE TABLE vet(
+    id SERIAL PRIMARY KEY NOT NULL,
+    first_name VARCHAR(48) NOT NULL,
+    last_name VARCHAR(48) NOT NULL
+);
+
 -- PET
 -- This table controls the data this is held about a pet
 -- includes name, type of pet and its owner
@@ -42,16 +51,8 @@ CREATE TABLE pet(
     name VARCHAR(64) NOT NULL,
     dob DATE NOT NULL,
     owner_id INT REFERENCES owner(id) NOT NULL,
-    type_id INT REFERENCES pet_type(id) NOT NULL
-);
-
--- VET
--- This table holds data about vets who work in the 
--- practice, contains only the vets name ATM.
-CREATE TABLE vet(
-    id SERIAL PRIMARY KEY NOT NULL,
-    first_name VARCHAR(48) NOT NULL,
-    last_name VARCHAR(48) NOT NULL
+    type_id INT REFERENCES pet_type(id) NOT NULL,
+    vet_id INT REFERENCES vet(id) NOT NULL
 );
 
 -- APPOINTMENTS

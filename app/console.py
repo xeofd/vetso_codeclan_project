@@ -41,10 +41,20 @@ OR.save(owner_2)
 owner_3 = Owner('John', 'Doe', 'example@example.com', 1234567890, '1 Example Drive', 'AB1 2AB', 'Glasgow', True)
 OR.save(owner_3)
 
+# Vets
+
+vet_1 = Vet('John', 'Doe')
+VR.save(vet_1)
+
+vet_2 = Vet('Jane', 'Doe')
+VR.save(vet_2)
+
 # Pets
-pet_1 = Pet('Hudini', '1/1/2012', owner_1, pet_type_3)
+pet_1 = Pet('Hudini', '1/1/2012', owner_1, pet_type_3, vet_1)
 PR.save(pet_1)
 
-pet_2 = Pet('KitKat', '1/1/2010', owner_1, pet_type_3)
+pet_2 = Pet('KitKat', '1/1/2010', owner_1, pet_type_3, vet_1)
 PR.save(pet_2)
 
+pet_3 = Pet('Steven', '03/10/04', owner_3, pet_type_5, vet_2)
+PR.save(pet_3)

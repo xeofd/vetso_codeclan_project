@@ -5,11 +5,12 @@
 #          : convert_dob_to_age()  - returns a string
 class Pet:
     # Initialise the class
-    def __init__(self, name, dob, owner, pet_type, id=None):
+    def __init__(self, name, dob, owner, pet_type, vet, id=None):
         self.name = name
         self.dob = dob
         self.owner = owner
         self.pet_type = pet_type
+        self.vet = vet
         self.id = id
 
     # Class functions
