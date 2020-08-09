@@ -52,8 +52,6 @@ a:hover{
 }
 #__app_main_outer{
     grid-area: main;
-    overflow: scroll;
-    overflow-x: hidden;
 }
 
 .bloc-container--flex{
@@ -75,7 +73,7 @@ table{
 
 .bloc-table--row-body > td{
     padding: 15px 10px;
-    border-top: 1px solid var(--primary-brand-color);
+    border-top: 2px solid var(--primary-brand-color);
 }
 .bloc-table--row-body:hover{
     background: var(--navigation-sub);

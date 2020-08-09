@@ -80,3 +80,26 @@ def update(note):
     sql = "UPDATE note SET (date, note_text, pet_id, vet_id) = (%s, %s, %s, %s) WHERE id = %s"
     values = [note.date, note.note_text, note.pet.id, note.vet.id, note.id]
     run_sql(sql, values)
+
+# FUNCTION: select_all_by_pet(item_id)
+# This function is used to find all notes about a specified pet
+def select_by_pet(id):
+    # Create list of notes == empty list
+    notes = []
+
+    # Create the SQL query && input data before running it
+    sql = "SELECT * FROM note WHERE pet_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    # Loop through all the results and append the objects to a list
+    for row in results:
+        # Get the objects to create the note object
+        pet = PR.select(row['pet_id'])
+        vet = VR.select(row['vet_id'])
+
+        # Create new note object && append to notes list
+        new_note = Note(row['date'], row['note_text'], pet, vet, row['id'])
+        notes.append(new_note)
+
+    return notes

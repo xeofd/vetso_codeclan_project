@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--data-display">
+
+            <div class="bloc-data--title">
+
+                <h2>{{ pet.name }}</h2>
+
+            </div>
+
+            <div class="bloc-data--content">
+
+                <div class="bloc-container--flex bloc-data--quick-items bloc-content">
+
+                    <div class="bloc-cell--40pc">
+
+                        <p>Pet breed: <span>{{ pet.pet_type.breed }}</span></p>
+    
+                    </div>
+    
+    
+                    <div class="bloc-cell--30pc">
+    
+                        <p>Owner: <span>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</span></p>
+                        
+                    </div>
+    
+    
+                    <div class="bloc-cell--30pc">
+    
+                        <p>Primary Vet: <span>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</span></p>
+                        
+                    </div>
+
+                </div>
+
+                <div class="bloc-container--flex">
+
+                    <div class="bloc-cell--50pc bloc-content bloc-cell--breaker">
+
+                        <div class="bloc-content--title">
+
+                            <h3>Notes</h3>
+
+                        </div>
+
+                        {% if notes_length > 0 %}
+
+                        {% for note in notes %}
+
+                        <div class="bloc-content--item">
+
+                            <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                                <p>Written on: {{ note.date }}</p>
+
+                                <p>By: {{ note.vet.first_name }} {{ note.vet.last_name }}</p>
+
+                            </div>
+
+                            <div class="bloc-content--item-data">
+
+                                <p>{{ note.note_text }}</p>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                        {% else %}
+
+                        <div class="bloc-content--item">
+
+                            <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                                <p>No notes to display</p>
+
+                            </div>
+
+                        </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="bloc-cell--50pc bloc-content">
+
+                        <div class="bloc-content--title">
+
+                            <h3>Treatments</h3>
+
+                        </div>
+
+                        <div class="bloc-content--item">
+
+                            <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                                <p>No treatments to display</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/pets/{{ pet.id }}/edit"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Edit pet</p>
+        </div></a>
+
+        <a href="/pets/{{ pet.id }}/add-note"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Add a note to this pet</p>
+        </div></a>
+
+        <form action="/pets/{{ pet.id }}/delete" method="POST">
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Delete this pet" />
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

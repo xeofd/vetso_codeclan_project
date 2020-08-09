@@ -57,7 +57,7 @@ def select(pet_id):
         pet_type = PTR.select(result[0]['type_id'])
         owner = OR.select(result[0]['owner_id'])
         vet = VR.select(result[0]['vet_id'])
-        new_pet = Pet(result[0]['name'], result[0]['dob'], owner, pet_type, vet)
+        new_pet = Pet(result[0]['name'], result[0]['dob'], owner, pet_type, vet, result[0]['id'])
     
     return new_pet
 
@@ -81,5 +81,5 @@ def delete_all():
 def update(pet):
     # Create SQL query, pass in the data and run it
     sql = "UPDATE pet SET (name, dob, owner_id, type_id, vet_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [pet.name, pet.dob, pet.owner.id, pet.type.id, pet.vet.id, pet.id]
+    values = [pet.name, pet.dob, pet.owner.id, pet.pet_type.id, pet.vet.id, pet.id]
     run_sql(sql, values)
