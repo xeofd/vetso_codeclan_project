@@ -10,6 +10,9 @@ from controllers.vets_controller import vets_blueprint
 # Create the flask app
 app = Flask(__name__)
 
+# Set secret-key
+app.secret_key = b'2At$svhuBy7X/.c5btxRY67e/s29'
+
 # Register blueprints
 app.register_blueprint(pets_blueprint)
 app.register_blueprint(owners_blueprint)
