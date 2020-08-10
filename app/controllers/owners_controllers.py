@@ -56,4 +56,45 @@ def view(id):
 def delete(id):
     # Run delete function and redirect
     OR.delete(id)
+
+    # Redirect user
+    return redirect('/owners')
+
+# EDIT
+@owners_blueprint.route('/owners/<id>/edit')
+def edit(id):
+    # Get data needed
+    owner = OR.select(id)
+
+    # Render template
+    return render_template('owners/edit.html', title='Edit'+owner.first_name+" "+owner.last_name, owner=owner)
+
+# UPDATE
+@owners_blueprint.route('/owners/<id>', methods=['POST'])
+def update(id):
+    # Get data from request
+    first_name = request.form['owner_first_name']
+    last_name = request.form['owner_last_name']
+    email = request.form['owner_email']
+    contact_no = request.form['owner_contact_number']
+    address = request.form['owner_address']
+    post_code = request.form['owner_post_code']
+    city = request.form['owner_city']
+
+    # check checkbox exists
+    checkbox = request.form.get("owner_registered")
+
+    if checkbox is not None:
+        print("Found")
+        registered = True
+        print(registered)
+    else:
+        print("Not found")
+        registered = False
+        print(registered)
+
+    # Create the updated object
+    owner = Owner(first_name, last_name, email, contact_no, address, post_code, city, registered, id)
+    OR.update(owner)
+
     return redirect('/owners')
