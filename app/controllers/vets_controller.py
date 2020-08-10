@@ -58,3 +58,26 @@ def delete(id):
     # Run the delete function
     VR.delete(id)
     return redirect('/vets')
+
+# EDIT
+@vets_blueprint.route('/vets/<id>/edit')
+def edit(id):
+    # Grab needed data
+    vet = VR.select(id)
+    
+    # Render page
+    return render_template('vets/edit.html', title='Edit '+vet.first_name+' '+vet.last_name, vet=vet)
+
+# UPDATE
+@vets_blueprint.route('/vets/<id>', methods=['POST'])
+def update(id):
+    # Grab data from request
+    first_name = request.form['vet_first_name']
+    last_name = request.form['vet_last_name']
+
+    # Create new object to be saved
+    vet = Vet(first_name, last_name, id)
+    VR.update(vet)
+
+    # Redirect the user
+    return redirect('/vets')

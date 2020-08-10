@@ -4,10 +4,10 @@
 <div class="bloc-content">
 
     <div class="bloc-content--title">
-        <h2>Edit {{ owner.first_name }} {{ owner.last_name }}</h2>
+        <h2>Edit {{ vet.first_name }} {{ vet.last_name }}</h2>
     </div>
 
-    <form action="/owners/{{ owner.id }}" method="POST">
+    <form action="/vets/{{ vet.id }}" method="POST">
 
         <h3>Name</h3>
 
@@ -16,11 +16,11 @@
             <div class="bloc-cell--50pc bloc-cell--breaker">
 
                 <div class=" bloc-form--label">
-                    <label for="owner_first_name">First name</label>
+                    <label for="vet_first_name">First name</label>
                 </div>
 
                 <div>
-                    <input type="text" name="owner_first_name" id="owner_first_name" value="{{ owner.first_name }}" required />
+                    <input type="text" name="vet_first_name" id="vet_first_name" value="{{ vet.first_name }}" required />
                 </div>
 
             </div>
@@ -29,128 +29,12 @@
 
                 <div class="bloc-form--label">
 
-                    <label for="owner_last_name">Last name</label>
+                    <label for="vet_last_name">Last name</label>
 
                 </div>
 
                 <div>
-                    <input type="text" name="owner_last_name" id="owner_last_name" value="{{ owner.last_name }}" required />
-                </div>
-
-            </div>
-
-        </div>
-
-        <h3>Contact details</h3>
-
-        <div class="bloc-container--flex bloc-content">
-
-            <div class="bloc-cell--50pc bloc-cell--breaker">
-
-                <div class="bloc-form--label">
-
-                    <label for="owner_email">Email address</label>
-
-                </div>
-
-                <div>
-
-                    <input type="email" name="owner_email" id="owner_email" value="{{ owner.email }}" required />
-
-                </div>
-
-            </div>
-
-            <div class="bloc-cell--50pc">
-
-                <div class="bloc-form--label">
-
-                    <label for="owner_contact_number">Contact number</label>
-
-                </div>
-
-                <div>
-
-                    <input type="tel" name="owner_contact_number" id="owner_contact_number" value="{{ owner.contact_number }}" required />
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="bloc-container--flex bloc-content">
-
-            <div class="bloc-cell--50pc bloc-cell--breaker">
-
-                <div class="bloc-form--label">
-
-                    <label for="owner_address">Home Address</label>
-
-                </div>
-
-                <div>
-
-                    <input type="text" name="owner_address" id="owner_address" value="{{ owner.address }}" required />
-
-                </div>
-
-            </div>
-
-            <div class="bloc-cell--50pc">
-
-                <div class="bloc-form--label">
-
-                    <label for="owner_post_code">Post Code</label>
-
-                </div>
-
-                <div>
-
-                    <input type="text" name="owner_post_code" id="owner_post_code" value="{{ owner.post_code }}" required />
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="bloc-container--flex bloc-content">
-
-            <div class="bloc-cell--50pc bloc-cell--breaker">
-
-                <div class="bloc-form--label">
-
-                    <label for="owner_city">City</label>
-    
-                </div>
-    
-                <div>
-    
-                    <input type="text" name="owner_city" id="owner_city" value="{{ owner.city }}" required />
-    
-                </div>
-
-            </div>
-
-            <div class="bloc-cell--50pc">
-
-                <div class="bloc-form--spacer"></div>
-
-                <div class="bloc-container--flex">
-
-                    <div class="bloc-cell--40pc bloc-form--label">
-
-                        <label for="owner_registered">Are they still registered?</label>
-    
-                    </div>
-    
-                    <div class="bloc-cell--60pc">
-    
-                        <input type="checkbox" name="owner_registered" id="owner_registered" value="True" {% if owner.registered == True %} checked {% endif %} />
-    
-                    </div>
-
+                    <input type="text" name="vet_last_name" id="vet_last_name" value="{{ vet.last_name }}" required />
                 </div>
 
             </div>
@@ -159,7 +43,7 @@
 
         <div class="bloc-content">
 
-            <input type="submit" value="Edit owner" class="bloc-button--large-button bloc-button--type-dark" />
+            <input type="submit" value="Add vet" class="bloc-button--large-button bloc-button--type-dark" />
 
         </div>
 
