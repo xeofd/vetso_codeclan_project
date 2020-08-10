@@ -1,5 +1,5 @@
 # Import required modules
-from flask import Flask, Blueprint, render_template, redirect, request
+from flask import Flask, Blueprint, render_template, redirect, request, session
 from models.classes import Pet, Note
 import repositories.pet_repository as PR
 import repositories.vet_repository as VR
@@ -15,11 +15,19 @@ pets_blueprint = Blueprint('pets', __name__)
 # INDEX
 @pets_blueprint.route('/pets')
 def index():
+    # Check for session
+    session_exists = session.get('error_message')
+
+    if session_exists != None:
+        error_message = session_exists
+        session.pop('error_message')
+    else:
+        error_message = None
     # Get required data from db
     pets = PR.select_all()
 
     # Render page
-    return render_template('pets/index.html', title='Pets', pets=pets)
+    return render_template('pets/index.html', title='Pets', pets=pets, error_message=error_message)
 
 # ADD
 @pets_blueprint.route('/pets/add')
@@ -51,6 +59,8 @@ def save():
         # Create new Pet object to be saved to db
         pet = Pet(name, dob, owner, pet_type, vet)
         PR.save(pet)
+    else:
+        session['error_message'] = 'Owner is no longer registered so cannot add pet'
 
     return redirect('/pets')
 

@@ -179,7 +179,31 @@ textarea{
     cursor: pointer;
 }
 
-/* Status && error popups */
+
+/* Status && errors */
+
+.bloc-status{
+    margin-bottom: 10px;
+    padding: 10px 0;
+    background: rgb(128, 128, 128);
+    border-radius: 5px;
+}
+.bloc-status--error{
+    background: var(--status-error);
+}
+.bloc-status--warning{
+    background: var(--status-warning);
+}
+.bloc-status--success{
+    background: var(--status-success);
+}
+
+.bloc-status--icon{
+    text-align: center;
+}
+.bloc-status--text{
+    padding: 10px 0 0 0;
+}
 
 /* OTHER */
 
