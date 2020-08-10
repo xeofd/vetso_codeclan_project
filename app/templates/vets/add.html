@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add vets to the system</h2>
+    </div>
+
+    <form action="/vets" method="POST">
+
+        <h3>Name</h3>
+
+        <div class="bloc-container--flex  bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class=" bloc-form--label">
+                    <label for="vet_first_name">First name</label>
+                </div>
+
+                <div>
+                    <input type="text" name="vet_first_name" id="vet_first_name" placeholder="First Name" required />
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+
+                    <label for="vet_last_name">Last name</label>
+
+                </div>
+
+                <div>
+                    <input type="text" name="vet_last_name" id="vet_last_name" placeholder="Last Name" required />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" value="Add vet" class="bloc-button--large-button bloc-button--type-dark" />
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

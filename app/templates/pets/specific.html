@@ -119,6 +119,10 @@
 
     <div class="bloc-cell--20pc bloc-content">
 
+        <a href="/owners/{{ pet.owner.id }}"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>View contact details for {{ pet.name }}</p>
+        </div></a>
+
         <a href="/pets/{{ pet.id }}/edit"><div class="bloc-button--large-button-div bloc-button--type-dark">
             <p>Edit pet</p>
         </div></a>

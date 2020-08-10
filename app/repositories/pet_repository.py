@@ -107,3 +107,27 @@ def select_by_owner(owner_id):
         pets.append(new_pet)
 
     return pets
+
+# FUNCTION: select_by_vet(item_id)
+# This function is used to select all pets by the vet id
+def select_by_vet(vet_id):
+    # Create list of pets == empty list
+    pets = []
+
+    # Create SQL query, input data && run
+    sql = "SELECT * FROM pet WHERE vet_id = %s"
+    values = [vet_id]
+    results = run_sql(sql, values)
+
+    # Loop through the results
+    for row in results:
+        # Get the objects to create the pet object
+        pet_type = PTR.select(row['type_id'])
+        owner = OR.select(row['owner_id'])
+        vet = VR.select(row['vet_id'])
+
+        # Create new pet object && append to pets list
+        new_pet = Pet(row['name'], row['dob'], owner, pet_type, vet, row['id'])
+        pets.append(new_pet)
+
+    return pets

@@ -9,33 +9,21 @@
 
     <form action="/pets" method="POST">
 
-        <div class="bloc-container--flex  bloc-content">
+        <h3>Name</h3>
 
-            <div class="bloc-cell--50pc bloc-cell--breaker">
+        <div class="bloc-content">
 
-                <div class=" bloc-form--label">
-                    <label for="pet_name">Pet name</label>
-                </div>
-
-                <div>
-                    <input type="text" name="pet_name" id="pet_name" placeholder="Pets Name" required />
-                </div>
-
+            <div class=" bloc-form--label">
+                <label for="pet_name">Pet name</label>
             </div>
 
-            <div class="bloc-cell--50pc">
-
-                <div class="bloc-form--label">
-                    <label for="pet_dob">Pet date of birth</label>
-                </div>
-
-                <div>
-                    <input type="date" name="pet_age" id="pet_dob" placeholder="Pets Name" required />
-                </div>
-
+            <div>
+                <input type="text" name="pet_name" id="pet_name" placeholder="Pets Name" required />
             </div>
 
         </div>
+
+        <h3>Details</h3>
 
         <div class="bloc-container--flex bloc-content">
 
@@ -59,16 +47,11 @@
             <div class="bloc-cell--50pc">
 
                 <div class="bloc-form--label">
-                    <label for="pet_owner">Pet owner</label>
+                    <label for="pet_dob">Date of birth</label>
                 </div>
 
                 <div>
-                    <select name="pet_owner" id="pet_owner" required>
-                        <option value="Null">Chose an owner</option>
-                        {% for owner in owners %}
-                        <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="date" name="pet_age" id="pet_dob" placeholder="Pets Name" required />
                 </div>
 
             </div>
@@ -96,11 +79,26 @@
 
             <div class="bloc-cell--50pc">
 
-                <div class="bloc-form--spacer"></div>
+                <div class="bloc-form--label">
+                    <label for="pet_owner">Pet owner</label>
+                </div>
 
-                <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add pet" />
+                <div>
+                    <select name="pet_owner" id="pet_owner" required>
+                        <option value="Null">Chose an owner</option>
+                        {% for owner in owners %}
+                        <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
             </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add pet" />
 
         </div>
 

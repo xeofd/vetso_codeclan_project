@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--title">
+            <h2>Vets</h2>
+        </div>
+
+        <table>
+    
+            <thead>
+    
+                <tr class="bloc-table--row-head">
+                    <td>Name</td>
+                </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                {% for vet in vets %}
+    
+                <tr class="bloc-table--row-body">
+                    <td>{{ vet.first_name }} {{ vet.last_name }}</td>
+                    <td><a href="/vets/{{ vet.id }}">More info</a></td>
+                </tr>
+    
+                {% endfor %}
+    
+            </tbody>
+    
+        </table>   
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/vets/add"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Add a vet</p>
+        </div></a>
+
+    </div>
+
+</div>
+
+{% endblock %}

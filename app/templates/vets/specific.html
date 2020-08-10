@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--data-display">
+
+            <div class="bloc-data--title">
+
+                <h2>{{ vet.first_name }} {{ vet.last_name }}</h2>
+
+            </div>
+
+            <div class="bloc-data--content">
+
+                <div class="bloc-data--quick-items bloc-content">
+    
+                    <div>
+    
+                        <p>They have <span>{{ pet_count }}</span> clients</p>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bloc-content">
+
+                <div class="bloc-content--title">
+
+                    <h3>Clients</h3>
+
+                </div>
+
+                <table>
+
+                    <thead>
+            
+                        <tr class="bloc-table--row-head">
+                            <td>Name</td>
+                            <td>Date of Birth</td>
+                            <td>Animal Type</td>
+                        </tr>
+            
+                    </thead>
+            
+                    <tbody>
+            
+                        {% for pet in pets %}
+            
+                        <tr class="bloc-table--row-body">
+                            <td>{{ pet.name }}</td>
+                            <td>{{ pet.dob }}</td>
+                            <td>{{ pet.pet_type.type }}, {{ pet.pet_type.breed }}</td>
+                            <td><a href="/pets/{{ pet.id }}">More info</a></td>
+                        </tr>
+            
+                        {% endfor %}
+            
+                    </tbody>
+            
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/vets/{{ vet.id }}/edit"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Edit vet</p>
+        </div></a>
+
+        <form action="/vets/{{ vet.id }}/delete" method="POST">
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Delete this vet" />
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
