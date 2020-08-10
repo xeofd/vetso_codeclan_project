@@ -78,7 +78,7 @@ table{
     border-top: 2px solid var(--primary-brand-color);
 }
 .bloc-table--row-body:hover{
-    background: var(--navigation-sub);
+    background: var(--data-display-highlight);
     cursor: pointer;
 }
 

@@ -110,7 +110,7 @@ def add_note(id):
     vets = VR.select_all()
 
     # Render the page
-    return render_template('pets/add-note.html', title='Add Pet', pet=pet, vets=vets)
+    return render_template('pets/add-note.html', title='Add a note to ' + pet.name, pet=pet, vets=vets)
 
 # SAVE NOTE
 @pets_blueprint.route('/pets/<id>/add-note', methods=['POST'])

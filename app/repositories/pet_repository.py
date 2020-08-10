@@ -83,3 +83,27 @@ def update(pet):
     sql = "UPDATE pet SET (name, dob, owner_id, type_id, vet_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [pet.name, pet.dob, pet.owner.id, pet.pet_type.id, pet.vet.id, pet.id]
     run_sql(sql, values)
+
+# FUNCTION: select_by_owner(item_id)
+# This function is used to select all pets by an owner id
+def select_by_owner(owner_id):
+    # Create list of pets == empty list
+    pets = []
+
+    # Create SQL query, input data && run
+    sql = "SELECT * FROM pet WHERE owner_id = %s"
+    values = [owner_id]
+    results = run_sql(sql, values)
+
+    # Loop through the results
+    for row in results:
+        # Get the objects to create the pet object
+        pet_type = PTR.select(row['type_id'])
+        owner = OR.select(row['owner_id'])
+        vet = VR.select(row['vet_id'])
+
+        # Create new pet object && append to pets list
+        new_pet = Pet(row['name'], row['dob'], owner, pet_type, vet, row['id'])
+        pets.append(new_pet)
+
+    return pets

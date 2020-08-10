@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--title">
+            <h2>Owners</h2>
+        </div>
+    
+        <table>
+    
+            <thead>
+    
+                <tr class="bloc-table--row-head">
+                    <td>Name</td>
+                    <td>Phone Number</td>
+                    <td>Currently Registered</td>
+                </tr>
+    
+            </thead>
+    
+            <tbody>
+    
+                {% for owner in owners %}
+    
+                <tr class="bloc-table--row-body">
+                    <td>{{ owner.first_name }} {{ owner.last_name }}</td>
+                    <td>{{ owner.contact_number }}</td>
+                    <td>{% if owner.registered == True %}
+                        <p>Yes</p>
+                        {% else %}
+                        <p>No</p>
+                        {% endif %}
+                    </td>
+                    <td><a href="/owners/{{ owner.id }}">More info</a></td>
+                </tr>
+    
+                {% endfor %}
+    
+            </tbody>
+    
+        </table>    
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/owners/add"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Add an owner</p>
+        </div></a>
+
+    </div>
+
+</div>
+
+{% endblock %}

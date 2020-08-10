@@ -130,10 +130,11 @@ form{
     margin: 20px 0;
 }
 
+.bloc-form--spacer{
+    height: 42px;
+}
 .bloc-form--label{
     padding: 10px 0;
-    font-size: 20px;
-    font-weight: bold;
 }
 
 input, select, textarea{

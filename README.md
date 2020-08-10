@@ -2,6 +2,10 @@
 
 This is my first project for CodeClan. The project is a simple website with a Python & postgreSQL backend for a vets so they can keep track of pets, vets and owners.
 
+## Primary Goal
+
+The primary goal of this website is to allow a user to quickly and easily view all of the data relevent to a specific pet, vet or owner and allow them to update or edit this data as they see fit.
+
 ## Required software to run
 
 This project requires **Python**, **postgreSQL**, **Flask** and **Psycopg2** to work properly.

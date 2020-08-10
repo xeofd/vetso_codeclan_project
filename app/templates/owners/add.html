@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add owners to the system</h2>
+    </div>
+
+    <form action="/owners" method="POST">
+
+        <h3>Name</h3>
+
+        <div class="bloc-container--flex  bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class=" bloc-form--label">
+                    <label for="owner_first_name">First name</label>
+                </div>
+
+                <div>
+                    <input type="text" name="owner_first_name" id="owner_first_name" placeholder="First Name" required />
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+
+                    <label for="owner_last_name">Last name</label>
+
+                </div>
+
+                <div>
+                    <input type="text" name="owner_last_name" id="owner_last_name" placeholder="Last Name" required />
+                </div>
+
+            </div>
+
+        </div>
+
+        <h3>Contact details</h3>
+
+        <div class="bloc-container--flex bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class="bloc-form--label">
+
+                    <label for="owner_email">Email address</label>
+
+                </div>
+
+                <div>
+
+                    <input type="email" name="owner_email" id="owner_email" placeholder="Email Address" required />
+
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+
+                    <label for="owner_contact_number">Contact number</label>
+
+                </div>
+
+                <div>
+
+                    <input type="tel" name="owner_contact_number" id="owner_contact_number" placeholder="Contact Number" required />
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bloc-container--flex bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class="bloc-form--label">
+
+                    <label for="owner_address">Home Address</label>
+
+                </div>
+
+                <div>
+
+                    <input type="text" name="owner_address" id="owner_address" placeholder="Address" required />
+
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+
+                    <label for="owner_post_code">Post Code</label>
+
+                </div>
+
+                <div>
+
+                    <input type="text" name="owner_post_code" id="owner_post_code" placeholder="Post Code" required />
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <div class="bloc-form--label">
+
+                <label for="owner_city">City</label>
+
+            </div>
+
+            <div>
+
+                <input type="text" name="owner_city" id="owner_city" placeholder="City" required />
+
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" value="Add owner" class="bloc-button--large-button bloc-button--type-dark" />
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

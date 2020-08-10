@@ -4,12 +4,14 @@ import repositories.pet_repository as PR
 import repositories.vet_repository as VR
 import repositories.owner_repository as OR
 from controllers.pets_controller import pets_blueprint
+from controllers.owners_controllers import owners_blueprint
 
 # Create the flask app
 app = Flask(__name__)
 
 # Register blueprints
 app.register_blueprint(pets_blueprint)
+app.register_blueprint(owners_blueprint)
 
 # Default routes
 @app.route('/')

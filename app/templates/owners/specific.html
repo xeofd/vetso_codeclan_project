@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-container--flex">
+
+    <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
+
+        <div class="bloc-content--data-display">
+
+            <div class="bloc-data--title">
+
+                <h2>{{ owner.first_name }} {{ owner.last_name }}</h2>
+
+            </div>
+
+            <div class="bloc-data--content">
+
+                <div class="bloc-container--flex bloc-data--quick-items bloc-content">
+
+                    <div class="bloc-cell--40pc">
+
+                        <p>Email: <span>{{ owner.email }}</span></p>
+    
+                    </div>
+    
+    
+                    <div class="bloc-cell--30pc">
+    
+                        <p>Contact Number: <span>{{ owner.contact_number }}</span></p>
+                        
+                    </div>
+    
+    
+                    <div class="bloc-cell--30pc">
+    
+                        <p>They have <span>{{ pet_count }}</span> pets</p>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bloc-container--flex bloc-content">
+
+                <div class="bloc-cell--70pc bloc-cell--breaker">
+
+                    <div class="bloc-content--title">
+
+                        <h3>Pets</h3>
+
+                    </div>
+
+                    <table>
+
+                        <thead>
+                
+                            <tr class="bloc-table--row-head">
+                                <td>Name</td>
+                                <td>Date of Birth</td>
+                                <td>Animal Type</td>
+                            </tr>
+                
+                        </thead>
+                
+                        <tbody>
+                
+                            {% for pet in pets %}
+                
+                            <tr class="bloc-table--row-body">
+                                <td>{{ pet.name }}</td>
+                                <td>{{ pet.dob }}</td>
+                                <td>{{ pet.pet_type.type }}, {{ pet.pet_type.breed }}</td>
+                                <td><a href="/pets/{{ pet.id }}">More info</a></td>
+                            </tr>
+                
+                            {% endfor %}
+                
+                        </tbody>
+                
+                    </table>
+
+                </div>
+
+                <div class="bloc-cell--30pc">
+
+                    <div class="bloc-content--title">
+
+                        <h3>Address</h3>
+
+                    </div>
+
+                    <div class="bloc-content--item">
+
+                        <div class="bloc-data--content">
+
+                            <p>{{ owner.address }}</p>
+                            <p>{{ owner.post_code }}</p>
+                            <p>{{ owner.city }}</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bloc-cell--20pc bloc-content">
+
+        <a href="/owners/{{ owner.id }}/edit"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Edit owner</p>
+        </div></a>
+
+        <form action="/owners/{{ owner.id }}/delete" method="POST">
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Delete this owner" />
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

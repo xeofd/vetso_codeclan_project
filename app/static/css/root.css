@@ -26,6 +26,7 @@
     --navigation-secondary: rgb(134, 134, 134);
     --navigation-sub: rgb(160, 160, 160);
     --data-display-background: rgb(204, 204, 204);
+    --data-display-highlight: rgb(226, 226, 226);
     /* status colors */
     --status-error: rgb(211, 47, 47);
     --status-warning: rgb(255, 167, 38);
