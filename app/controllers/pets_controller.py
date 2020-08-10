@@ -47,9 +47,10 @@ def save():
     owner = OR.select(owner_id)
     vet = VR.select(vet_id)
 
-    # Create new Pet object to be saved to db
-    pet = Pet(name, dob, owner, pet_type, vet)
-    PR.save(pet)
+    if (owner.registered == True):
+        # Create new Pet object to be saved to db
+        pet = Pet(name, dob, owner, pet_type, vet)
+        PR.save(pet)
 
     return redirect('/pets')
 
