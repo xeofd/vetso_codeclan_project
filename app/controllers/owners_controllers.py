@@ -50,3 +50,10 @@ def view(id):
     pet_count = len(pets)
 
     return render_template('owners/specific.html', title=owner.first_name + " " + owner.last_name, owner=owner, pets=pets, pet_count=pet_count)
+
+# DELETE
+@owners_blueprint.route('/owners/<id>/delete', methods=['POST'])
+def delete(id):
+    # Run delete function and redirect
+    OR.delete(id)
+    return redirect('/owners')
