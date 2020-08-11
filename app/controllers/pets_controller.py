@@ -14,6 +14,13 @@ import repositories.treatment_repository as TR
 # Create blueprint
 pets_blueprint = Blueprint('pets', __name__)
 
+# Set session error logging
+def return_error(error):
+    # set session
+    session['error_message'] = 'EC: ' + error + ' - Could not add object to database. Please try again'
+    # Redirect the user
+    return redirect('/vets')
+
 # Routes
 
 # INDEX
@@ -57,6 +64,15 @@ def save():
     type_id = request.form['pet_type']
     owner_id = request.form['pet_owner']
     vet_id = request.form['pet_vet']
+
+    if len(name) > 64:
+        return_error('ap-1') # Return error code 1: Name too long
+    elif type_id == 'None':
+        return_error('ap-2') # Return error code 2: No Type chosen
+    elif owner_id == 'None':
+        return_error('ap-3') # Return error code 3: No Owner chosen
+    elif vet_id == 'None':
+        return_error('ap-4') # Return error code 4: No Vet chosen
 
     # Find the correct data for the Pet object
     pet_type = PTR.select(type_id)

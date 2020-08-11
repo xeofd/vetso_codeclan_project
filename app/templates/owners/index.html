@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div id="__app_status_outer">
+
+    {% if error_message != None %}
+    <div class="bloc-container--flex bloc-status bloc-status--error">
+
+        <div class="bloc-cell--10pc bloc-status--icon">
+
+            <span class="material-icons md-36">error</span>
+
+        </div>
+
+        <div class="bloc-cell--90pc bloc-status--text">
+
+            <p>{{ error_message }}</p>
+
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+
 <div class="bloc-container--flex">
 
     <div class="bloc-cell--80pc bloc-cell--breaker bloc-content">
