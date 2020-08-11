@@ -79,13 +79,12 @@ def save():
     owner = OR.select(owner_id)
     vet = VR.select(vet_id)
 
-    if (owner.registered == True):
-        # Create new Pet object to be saved to db
-        pet = Pet(name, dob, owner, pet_type, vet)
-        PR.save(pet)
-    else:
-        session['error_message'] = 'Owner is no longer registered so cannot add pet'
+    if (owner.registered == False):
+        return_error('ap-5') # Return error code 5: Cannot add as owner not registered
 
+    # Create new Pet object to be saved to db
+    pet = Pet(name, dob, owner, pet_type, vet)
+    PR.save(pet)
     return redirect('/pets')
 
 # VIEW
