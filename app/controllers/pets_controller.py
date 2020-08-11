@@ -117,7 +117,7 @@ def update(id):
     pet = Pet(name, dob, owner, pet_type, vet, id)
     PR.update(pet)
 
-    return redirect('/pets')
+    return redirect('/pets/'+id)
 
 # DELETE
 @pets_blueprint.route('/pets/<id>/delete', methods=['POST'])
@@ -151,7 +151,7 @@ def save_note(id):
     NR.save(note)
 
     # Redirect
-    return redirect('/pets')
+    return redirect('/pets/'+id)
 
 # ADD TREATMENT
 @pets_blueprint.route('/pets/<id>/add-treatment')
