@@ -18,7 +18,7 @@ class Treatment:
 # FUNCTIONS: N/A
 class PerscribedTreatment:
     # Initialise the function
-    def __init__(self, pet, treatment, id):
+    def __init__(self, pet, treatment, id=None):
         self.pet = pet
         self.treatment = treatment
         self.id = id

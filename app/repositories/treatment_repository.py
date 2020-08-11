@@ -16,7 +16,7 @@ def save(treatment):
     treatment.id = id
     return treatment
 
-# SELECT
+# SELECT SPECIFIC
 def select(id):
     # Create SQL query, input data && run
     sql = "SELECT * FROM treatment WHERE id = %s"
@@ -27,6 +27,22 @@ def select(id):
     if len(result) > 0:
         treatment = Treatment(result[0]['name'], result[0]['cost'], result[0]['length'], result[0]['medicine'], result[0]['type'], result[0]['id'])
     return treatment
+
+# SELECT ALL
+def select_all():
+    # Create list of treatments == empty list
+    treatments = []
+
+    # Create SQL query, insert data && run
+    sql = "SELECT * FROM treatment"
+    results = run_sql(sql)
+
+    # Loop through results
+    for row in results:
+        treatment = Treatment(row['name'], row['cost'], row['length'], row['medicine'], row['type'], row['id'])  
+        treatments.append(treatment)
+
+    return treatments      
 
 # DELETE ALL
 def delete_all():

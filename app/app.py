@@ -6,6 +6,7 @@ import repositories.owner_repository as OR
 from controllers.pets_controller import pets_blueprint
 from controllers.owners_controllers import owners_blueprint
 from controllers.vets_controller import vets_blueprint
+from controllers.treatments_controller import treatment_blueprint
 
 # Create the flask app
 app = Flask(__name__)
@@ -17,6 +18,7 @@ app.secret_key = b'2At$svhuBy7X/.c5btxRY67e/s29'
 app.register_blueprint(pets_blueprint)
 app.register_blueprint(owners_blueprint)
 app.register_blueprint(vets_blueprint)
+app.register_blueprint(treatment_blueprint)
 
 # Default routes
 @app.route('/')
