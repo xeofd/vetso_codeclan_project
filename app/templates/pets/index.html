@@ -37,7 +37,7 @@
     
                 <tr class="bloc-table--row-head">
                     <td>Name</td>
-                    <td>Date of Birth</td>
+                    <td>Age</td>
                     <td>Animal Type</td>
                     <td>Owners Name</td>
                     <td>Primary Vet</td>
@@ -51,7 +51,7 @@
     
                 <tr class="bloc-table--row-body">
                     <td>{{ pet.name }}</td>
-                    <td>{{ pet.dob }}</td>
+                    <td>{{ pet.age }}</td>
                     <td>{{ pet.pet_type.type }}, {{ pet.pet_type.breed }}</td>
                     <td>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</td>
                     <td>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</td>

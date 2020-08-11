@@ -30,6 +30,10 @@ def index():
     # Get required data from db
     pets = PR.select_all()
 
+    # Get pet ages
+    for pet in pets:
+        pet.convert_dob_to_age()
+
     # Render page
     return render_template('pets/index.html', title='Pets', pets=pets, error_message=error_message)
 
@@ -78,7 +82,9 @@ def view(id):
     treatments = perscribed.select_by_pet(pet.id)
     treatments_length = len(treatments)
 
-    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
+    pet_dob_string = pet.convert_dob_to_text()
+
+    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet_dob_string=pet_dob_string, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
 
 # EDIT
 @pets_blueprint.route('/pets/<id>/edit')

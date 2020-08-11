@@ -15,26 +15,53 @@
 
             <div class="bloc-data--content">
 
-                <div class="bloc-container--flex bloc-data--quick-items bloc-content">
+                <div class="bloc-content">
 
-                    <div class="bloc-cell--40pc">
+                    <div class="bloc-container--flex bloc-data--quick-items bloc-content">
 
-                        <p>Pet breed: <span>{{ pet.pet_type.breed }}</span></p>
-    
+                        <div class="bloc-cell--40pc">
+
+                            <p>Pet breed: <span>{{ pet.pet_type.breed }}</span></p>
+        
+                        </div>
+        
+        
+                        <div class="bloc-cell--30pc">
+        
+                            <p>Owner: <span>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</span></p>
+                            
+                        </div>
+        
+        
+                        <div class="bloc-cell--30pc">
+        
+                            <p>Primary Vet: <span>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</span></p>
+                            
+                        </div>
+
                     </div>
-    
-    
-                    <div class="bloc-cell--30pc">
-    
-                        <p>Owner: <span>{{ pet.owner.first_name }} {{ pet.owner.last_name }}</span></p>
-                        
-                    </div>
-    
-    
-                    <div class="bloc-cell--30pc">
-    
-                        <p>Primary Vet: <span>{{ pet.vet.first_name }} {{ pet.vet.last_name }}</span></p>
-                        
+
+                    <div class="bloc-container--flex bloc-data--quick-items">
+
+                        <div class="bloc-cell--40pc">
+
+                            <p>Date of Birth: <span>{{ pet_dob_string }}</span></p>
+        
+                        </div>
+
+                        <div class="bloc-cell--30pc">
+        
+                            <p><span>{{ notes_length }}</span> notes</p>
+                            
+                        </div>
+        
+        
+                        <div class="bloc-cell--30pc">
+        
+                            <p><span>{{ treatments_length }}</span> treatments</p>
+                            
+                        </div>
+        
                     </div>
 
                 </div>
