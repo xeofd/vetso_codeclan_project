@@ -58,7 +58,7 @@ def delete(id):
     OR.delete(id)
 
     # Redirect user
-    return redirect('/owners')
+    return redirect('/owners/'+id)
 
 # EDIT
 @owners_blueprint.route('/owners/<id>/edit')
@@ -97,4 +97,4 @@ def update(id):
     owner = Owner(first_name, last_name, email, contact_no, address, post_code, city, registered, id)
     OR.update(owner)
 
-    return redirect('/owners')
+    return redirect('/owners/'+id)

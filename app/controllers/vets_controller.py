@@ -57,7 +57,7 @@ def view(id):
 def delete(id):
     # Run the delete function
     VR.delete(id)
-    return redirect('/vets')
+    return redirect('/vets/'+id)
 
 # EDIT
 @vets_blueprint.route('/vets/<id>/edit')
@@ -80,4 +80,4 @@ def update(id):
     VR.update(vet)
 
     # Redirect the user
-    return redirect('/vets')
+    return redirect('/vets/'+id)
