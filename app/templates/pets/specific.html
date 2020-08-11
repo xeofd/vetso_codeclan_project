@@ -97,6 +97,35 @@
 
                         </div>
 
+                        {% if treatments_length > 0 %}
+
+                        {% for treatment in treatments %}
+
+                        <div class="bloc-content--item">
+
+                            <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                                <p>Name: {{ treatment.name }}</p>
+
+                                <p>Type: {{ treatment.type }}</p>
+
+                                <p>Cost: {{ treatment.cost }}</p>
+
+                            </div>
+
+                            <div class="bloc-content--item-data">
+
+                                <p>This treatment will use: {{ treatment.medicine }}</p>
+                                <p>The treatment will take {{ treatment.length }}</p>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                        {% else %}
+
                         <div class="bloc-content--item">
 
                             <div class="bloc-container--flex bloc-content--item-quick-data">
@@ -106,6 +135,8 @@
                             </div>
 
                         </div>
+
+                        {% endif %}
 
                     </div>
 
@@ -129,6 +160,10 @@
 
         <a href="/pets/{{ pet.id }}/add-note"><div class="bloc-button--large-button-div bloc-button--type-dark">
             <p>Add a note to this pet</p>
+        </div></a>
+
+        <a href="/pets/{{ pet.id }}/add-treatment"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Add a treatment to this pet</p>
         </div></a>
 
         <form action="/pets/{{ pet.id }}/delete" method="POST">

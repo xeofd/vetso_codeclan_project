@@ -7,6 +7,7 @@ import repositories.vet_repository as VR
 import repositories.owner_repository as OR
 import repositories.note_repository as NR
 import repositories.pet_type_repository as PTR
+import repositories.perscribed_treatments_repository as perscribed
 
 # Create blueprint
 pets_blueprint = Blueprint('pets', __name__)
@@ -72,8 +73,10 @@ def view(id):
     pet = PR.select(id)
     notes = NR.select_by_pet(id)
     notes_length = len(notes)
+    treatments = perscribed.select_by_pet(pet.id)
+    treatments_length = len(treatments)
 
-    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length)
+    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
 
 # EDIT
 @pets_blueprint.route('/pets/<id>/edit')

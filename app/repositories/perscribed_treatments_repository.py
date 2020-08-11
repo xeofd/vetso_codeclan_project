@@ -1,6 +1,8 @@
 # Import needed modules
 from database.run_sql import run_sql
 from models.treatment import Treatment, PerscribedTreatment
+import repositories.pet_repository as PR
+import repositories.treatment_repository as TR
 
 # CRUD Ops
 
@@ -27,3 +29,19 @@ def select_by_pet(id):
     results = run_sql(sql, values)
 
     # Loop through results
+    for row in results:
+        # Grab data for needed objects
+        pet = PR.select(row['pet_id'])
+        treatment = TR.select(row['treatment_id'])
+
+        # Create new object
+        perscribed = PerscribedTreatment(pet, treatment, row['id'])
+        treatments.append(perscribed)
+    
+    return treatments
+
+# DELETE ALL
+def delete_all():
+    # Create SQL query && run
+    sql = "DELETE FROM perscribed_treatment"
+    run_sql(sql)
