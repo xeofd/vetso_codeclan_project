@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add treatments to the system</h2>
+    </div>
+
+    <form action="/treatments/add" method="POST">
+
+        <h3>Name</h3>
+
+        <div class="bloc-content">
+
+            <div class=" bloc-form--label">
+                <label for="treatment_name">Treatment name</label>
+            </div>
+
+            <div>
+                <input type="text" name="treatment_name" id="treatment_name" placeholder="Treatment Name" required />
+            </div>
+
+        </div>
+
+        <h3>Details</h3>
+
+        <div class="bloc-container--flex bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class="bloc-form--label">
+                    <label for="treatment_cost">Treatment Cost (in £)</label>
+                </div>
+
+                <div>
+                    <input type="text" name="treatment_cost" id="treatment_cost" placeholder="Treatment Cost" required />
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+                    <label for="treatment_length">Length of treatment (in days)</label>
+                </div>
+
+                <div>
+                    <input type="text" name="treatment_length" id="treatment_length" placeholder="Length of Treatment" required />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bloc-container--flex bloc-content">
+
+            <div class="bloc-cell--50pc bloc-cell--breaker">
+
+                <div class="bloc-form--label">
+                    <label for="treatment_medicine">Medicine</label>
+                </div>
+
+                <div>
+                    <input type="text" name="treatment_medicine" id="treatment_length" placeholder="Medicine" required />
+                </div>
+
+            </div>
+
+            <div class="bloc-cell--50pc">
+
+                <div class="bloc-form--label">
+                    <label for="treatment_type">Treatment Type</label>
+                </div>
+
+                <div>
+                    <input type="text" name="treatment_type" id="treatment_type" placeholder="Treatment type" required />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add pet" />
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

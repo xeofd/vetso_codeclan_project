@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add a pet type to the system</h2>
+    </div>
+
+    <form action="/pet-types/add" method="POST">
+
+        <h3>Type</h3>
+
+        <div class="bloc-content">
+
+            <div class=" bloc-form--label">
+                <label for="pet_type">Animal type</label>
+            </div>
+
+            <div>
+                <input type="text" name="pet_type" id="pet_type" placeholder="Animal type" required />
+            </div>
+
+        </div>
+
+        <h3>Breed</h3>
+
+        <div class="bloc-content">
+
+            <div class="bloc-form--label">
+                <label for="pet_breed">Animal breed</label>
+            </div>
+
+            <div>
+                <input type="text" name="pet_breed" id="pet_breed" placeholder="Animal breed" required />
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add pet" />
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

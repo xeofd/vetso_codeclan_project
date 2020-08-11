@@ -1,6 +1,6 @@
 # Import required modules
 from database.run_sql import run_sql
-from models.classes import PetType
+from models.pet_type import PetType
 
 # CRUD FUNCTIONS
 

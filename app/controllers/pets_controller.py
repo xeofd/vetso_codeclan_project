@@ -1,11 +1,15 @@
 # Import required modules
 from flask import Flask, Blueprint, render_template, redirect, request, session
-from models.classes import Pet, Note
+from models.pet import Pet
+from models.note import Note
+from models.treatment import PerscribedTreatment
 import repositories.pet_repository as PR
 import repositories.vet_repository as VR
 import repositories.owner_repository as OR
 import repositories.note_repository as NR
 import repositories.pet_type_repository as PTR
+import repositories.perscribed_treatments_repository as perscribed
+import repositories.treatment_repository as TR
 
 # Create blueprint
 pets_blueprint = Blueprint('pets', __name__)
@@ -71,8 +75,10 @@ def view(id):
     pet = PR.select(id)
     notes = NR.select_by_pet(id)
     notes_length = len(notes)
+    treatments = perscribed.select_by_pet(pet.id)
+    treatments_length = len(treatments)
 
-    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length)
+    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
 
 # EDIT
 @pets_blueprint.route('/pets/<id>/edit')
@@ -140,3 +146,29 @@ def save_note(id):
 
     # Redirect
     return redirect('/pets')
+
+# ADD TREATMENT
+@pets_blueprint.route('/pets/<id>/add-treatment')
+def add_treatment(id):
+    # Grab needed data
+    pet = PR.select(id)
+    treatments = TR.select_all()
+
+    # Render page
+    return render_template('pets/add-treatment.html', title='Add treatment to '+pet.name, treatments=treatments, pet=pet)
+
+# SAVE TREATMENT
+@pets_blueprint.route('/pets/<id>/add-treatment', methods=['POST'])
+def save_treatment(id):
+    # Pull in POST data
+    treatment_id = request.form['treatment_id']
+
+    # Pull in database data
+    pet = PR.select(id)
+    treatment = TR.select(treatment_id)
+
+    # Save to perscribed treatments
+    perscribed_treatment = PerscribedTreatment(pet, treatment)
+    perscribed.save(perscribed_treatment)
+
+    return redirect('/pets/'+id)

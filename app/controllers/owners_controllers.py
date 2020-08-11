@@ -1,6 +1,6 @@
 # Import required modules
 from flask import Flask, Blueprint, render_template, redirect, request
-from models.classes import Owner
+from models.owner import Owner
 import repositories.pet_repository as PR
 import repositories.vet_repository as VR
 import repositories.owner_repository as OR

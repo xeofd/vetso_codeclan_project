@@ -1,6 +1,8 @@
 # Import required modules
 from database.run_sql import run_sql
-from models.classes import Pet, Vet, Note
+from models.pet import Pet
+from models.vet import Vet
+from models.note import Note
 import repositories.pet_repository as PR
 import repositories.vet_repository as VR
 

@@ -1,6 +1,9 @@
 # Import required modules
 from database.run_sql import run_sql
-from models.classes import Pet, Owner, PetType, Vet
+from models.pet import Pet
+from models.owner import Owner
+from models.pet_type import PetType
+from models.vet import Vet
 import repositories.pet_type_repository as PTR
 import repositories.owner_repository as OR
 import repositories.vet_repository as VR

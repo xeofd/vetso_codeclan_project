@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Add a treatment to {{ pet.name }}</h2>
+    </div>
+
+    <form action="/pets/{{ pet.id }}/add-treatment" method="POST">
+
+        <h3>Treatment</h3>
+
+        <div class="bloc-content">
+
+            <div class="bloc-form--label">
+                <label for="pet_type">Treatment type</label>
+            </div>
+
+            <div>
+                <select name="treatment_id">
+                    <option selected>Chose a treatment</option>
+                    {% for treatment in treatments %}
+                    <option value="{{ treatment.id }}">{{ treatment.name }} - £{{ treatment.cost }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add treatment" />
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -9,46 +9,35 @@
 
     <form action="/pets/{{ pet.id }}" method="POST">
 
-        <div class="bloc-container--flex  bloc-content">
+        <h3>Name</h3>
 
-            <div class="bloc-cell--50pc bloc-cell--breaker">
+        <div class="bloc-content">
 
-                <div class=" bloc-form--label">
-                    <label for="pet_name">Pet name</label>
-                </div>
-
-                <div>
-                    <input type="text" name="pet_name" id="pet_name" value="{{ pet.name }}" />
-                </div>
-
+            <div class=" bloc-form--label">
+                <label for="pet_name">Pet name</label>
             </div>
 
-            <div class="bloc-cell--50pc">
-
-                <div class="bloc-form--label">
-                    <label for="pet_name">Pet date of birth</label>
-                </div>
-
-                <div>
-                    <input type="date" name="pet_age" id="pet_name" value="{{ pet.dob }}" />
-                </div>
-
+            <div>
+                <input type="text" name="pet_name" id="pet_name" value="{{ pet.name }}" required />
             </div>
 
         </div>
+
+        <h3>Details</h3>
 
         <div class="bloc-container--flex bloc-content">
 
             <div class="bloc-cell--50pc bloc-cell--breaker">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Pet type</label>
+                    <label for="pet_type">Pet breed</label>
                 </div>
 
                 <div>
-                    <select name="pet_type" id="pet_type">
+                    <select name="pet_type" id="pet_type" required>
+                        <option value="Null">Chose a breed</option>
                         {% for type in pet_types %}
-                        <option value="{{ type.id }}" {% if type.id == pet.pet_type.id %} selected {% endif %}>{{ type.breed }}</option>
+                        <option value="{{ type.id }}" {% if type.id == pet.pet_type.id %} selected {% endif %}>{{ type.type }} - {{ type.breed }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -58,15 +47,11 @@
             <div class="bloc-cell--50pc">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Pet owner</label>
+                    <label for="pet_dob">Date of birth</label>
                 </div>
 
                 <div>
-                    <select name="pet_owner" id="pet_type">
-                        {% for owner in owners %}
-                        <option value="{{ owner.id }}" {% if owner.id == pet.owner.id %} selected {% endif %}>{{ owner.first_name }} {{ owner.last_name }}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="date" name="pet_age" id="pet_dob" value="{{ pet.dob }}" required />
                 </div>
 
             </div>
@@ -78,11 +63,12 @@
             <div class="bloc-cell--50pc bloc-cell--breaker">
 
                 <div class="bloc-form--label">
-                    <label for="pet_name">Primary vet</label>
+                    <label for="pet_vet">Primary vet</label>
                 </div>
 
                 <div>
-                    <select name="pet_vet" id="pet_type">
+                    <select name="pet_vet" id="pet_vet" required>
+                        <option value="Null">Chose a vet</option>
                         {% for vet in vets %}
                         <option value="{{ vet.id }}" {% if vet.id == pet.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }}</option>
                         {% endfor %}
@@ -93,9 +79,26 @@
 
             <div class="bloc-cell--50pc">
 
-                <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Add pet" />
+                <div class="bloc-form--label">
+                    <label for="pet_owner">Pet owner</label>
+                </div>
+
+                <div>
+                    <select name="pet_owner" id="pet_owner" required>
+                        <option value="Null">Chose an owner</option>
+                        {% for owner in owners %}
+                        <option value="{{ owner.id }}" {% if owner.id == pet.owner.id %} selected {% endif %}>{{ owner.first_name }} {{ owner.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
             </div>
+
+        </div>
+
+        <div class="bloc-content">
+
+            <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Edit pet" />
 
         </div>
 

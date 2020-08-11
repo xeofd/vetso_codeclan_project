@@ -37,7 +37,7 @@
                     <select name="pet_type" id="pet_type" required>
                         <option value="Null">Chose a breed</option>
                         {% for type in pet_types %}
-                        <option value="{{ type.id }}">{{ type.breed }}</option>
+                        <option value="{{ type.id }}">{{ type.type }} - {{ type.breed }}</option>
                         {% endfor %}
                     </select>
                 </div>
