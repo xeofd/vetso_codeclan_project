@@ -14,6 +14,13 @@ import repositories.treatment_repository as TR
 # Create blueprint
 pets_blueprint = Blueprint('pets', __name__)
 
+# Set session error logging
+def return_error(error):
+    # set session
+    session['error_message'] = 'EC: ' + error + ' - Could not add object to database. Please try again'
+    # Redirect the user
+    return redirect('/vets')
+
 # Routes
 
 # INDEX
@@ -29,6 +36,10 @@ def index():
         error_message = None
     # Get required data from db
     pets = PR.select_all()
+
+    # Get pet ages
+    for pet in pets:
+        pet.convert_dob_to_age()
 
     # Render page
     return render_template('pets/index.html', title='Pets', pets=pets, error_message=error_message)
@@ -54,18 +65,26 @@ def save():
     owner_id = request.form['pet_owner']
     vet_id = request.form['pet_vet']
 
+    if len(name) > 64:
+        return_error('ap-1') # Return error code 1: Name too long
+    elif type_id == 'None':
+        return_error('ap-2') # Return error code 2: No Type chosen
+    elif owner_id == 'None':
+        return_error('ap-3') # Return error code 3: No Owner chosen
+    elif vet_id == 'None':
+        return_error('ap-4') # Return error code 4: No Vet chosen
+
     # Find the correct data for the Pet object
     pet_type = PTR.select(type_id)
     owner = OR.select(owner_id)
     vet = VR.select(vet_id)
 
-    if (owner.registered == True):
-        # Create new Pet object to be saved to db
-        pet = Pet(name, dob, owner, pet_type, vet)
-        PR.save(pet)
-    else:
-        session['error_message'] = 'Owner is no longer registered so cannot add pet'
+    if (owner.registered == False):
+        return_error('ap-5') # Return error code 5: Cannot add as owner not registered
 
+    # Create new Pet object to be saved to db
+    pet = Pet(name, dob, owner, pet_type, vet)
+    PR.save(pet)
     return redirect('/pets')
 
 # VIEW
@@ -78,7 +97,9 @@ def view(id):
     treatments = perscribed.select_by_pet(pet.id)
     treatments_length = len(treatments)
 
-    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
+    pet_dob_string = pet.convert_dob_to_text()
+
+    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet_dob_string=pet_dob_string, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
 
 # EDIT
 @pets_blueprint.route('/pets/<id>/edit')
@@ -111,7 +132,7 @@ def update(id):
     pet = Pet(name, dob, owner, pet_type, vet, id)
     PR.update(pet)
 
-    return redirect('/pets')
+    return redirect('/pets/'+id)
 
 # DELETE
 @pets_blueprint.route('/pets/<id>/delete', methods=['POST'])
@@ -145,7 +166,7 @@ def save_note(id):
     NR.save(note)
 
     # Redirect
-    return redirect('/pets')
+    return redirect('/pets/'+id)
 
 # ADD TREATMENT
 @pets_blueprint.route('/pets/<id>/add-treatment')

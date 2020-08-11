@@ -35,7 +35,7 @@
 
                 <div>
                     <select name="pet_type" id="pet_type" required>
-                        <option value="Null">Chose a breed</option>
+                        <option value="None">Chose a breed</option>
                         {% for type in pet_types %}
                         <option value="{{ type.id }}">{{ type.type }} - {{ type.breed }}</option>
                         {% endfor %}
@@ -68,7 +68,7 @@
 
                 <div>
                     <select name="pet_vet" id="pet_vet" required>
-                        <option value="Null">Chose a vet</option>
+                        <option value="None">Chose a vet</option>
                         {% for vet in vets %}
                         <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
                         {% endfor %}
@@ -85,7 +85,7 @@
 
                 <div>
                     <select name="pet_owner" id="pet_owner" required>
-                        <option value="Null">Chose an owner</option>
+                        <option value="None">Chose an owner</option>
                         {% for owner in owners %}
                         <option value="{{ owner.id }}">{{ owner.first_name }} {{ owner.last_name }}</option>
                         {% endfor %}
