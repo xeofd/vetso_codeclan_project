@@ -15,9 +15,11 @@ def save(appointment):
     values = [appointment.date, appointment.note, appointment.vet.id, appointment.pet.id]
     result = run_sql(sql, values)
 
-    # Set objects id to db id
-    id = result[0]['id']
-    appointment.id = id
+    if len(result) > 0:
+        # Set objects id to db id
+        id = result[0]['id']
+        appointment.id = id
+
     return appointment
 
 # SELECT

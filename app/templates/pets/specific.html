@@ -66,7 +66,7 @@
 
                 </div>
 
-                <div class="bloc-container--flex">
+                <div class="bloc-container--flex bloc-content">
 
                     <div class="bloc-cell--50pc bloc-content bloc-cell--breaker">
 
@@ -169,6 +169,58 @@
 
                 </div>
 
+                <div class="bloc-content">
+
+                    <div class="bloc-content--title">
+
+                        <h3>Appointments</h3>
+
+                    </div>
+
+                    {% if appointment_length > 0 %}
+
+                    {% for appointment in appointments %}
+
+                    <div class="bloc-content--item">
+
+                        <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                            <p>Date of appointment: {{ appointment.date }}</p>
+
+                            <p>Attending vet: {{ appointment.vet.first_name }} {{ appointment.vet.last_name }}</p>
+
+                            <p>Days untill appointment: {% if appointment.days_until_count < 0 %} This appointment has passed {% else %}{{ appointment.days_until_count }}{% endif %}</p>
+
+                        </div>
+
+                        <div class="bloc-content--item-data">
+
+                            <h3>Notes:</h3>
+
+                            <p>{{ appointment.note }}</p>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                    {% else %}
+
+                    <div class="bloc-content--item">
+
+                        <div class="bloc-container--flex bloc-content--item-quick-data">
+
+                            <p>No appointments scheduled</p>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
             </div>
 
         </div>
@@ -187,6 +239,10 @@
 
         <a href="/pets/{{ pet.id }}/add-note"><div class="bloc-button--large-button-div bloc-button--type-dark">
             <p>Add a note to this pet</p>
+        </div></a>
+
+        <a href="/pets/{{ pet.id }}/add-appointment"><div class="bloc-button--large-button-div bloc-button--type-dark">
+            <p>Create an appointment for {{ pet.name }}</p>
         </div></a>
 
         <a href="/pets/{{ pet.id }}/add-treatment"><div class="bloc-button--large-button-div bloc-button--type-dark">

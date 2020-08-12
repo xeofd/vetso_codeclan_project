@@ -8,6 +8,7 @@ from controllers.owners_controllers import owners_blueprint
 from controllers.vets_controller import vets_blueprint
 from controllers.treatments_controller import treatment_blueprint
 from controllers.pet_types_controller import pet_type_blueprint
+from controllers.appointments_controller import appointments_blueprint
 
 # Create the flask app
 app = Flask(__name__)
@@ -21,6 +22,7 @@ app.register_blueprint(owners_blueprint)
 app.register_blueprint(vets_blueprint)
 app.register_blueprint(treatment_blueprint)
 app.register_blueprint(pet_type_blueprint)
+app.register_blueprint(appointments_blueprint)
 
 # Default routes
 @app.route('/')
