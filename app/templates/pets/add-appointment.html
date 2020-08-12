@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="bloc-content">
+
+    <div class="bloc-content--title">
+        <h2>Create an appointment for {{ pet.name }}</h2>
+    </div>
+
+    <form action="/appointments/add/{{ pet.id }}" method="POST" class="bloc-container--flex">
+
+        <div class="bloc-cell--50pc bloc-cell--breaker bloc-content">
+
+            <h3>Notes</h3>
+
+            <textarea name="appointment_note" placeholder="Type appointment notes here"></textarea>
+
+        </div>
+
+        <div class="bloc-cell--50pc bloc-content">
+
+            <h3>Details</h3>
+
+            <div class="bloc-content">
+
+                <div class="bloc-form--label">
+                    <label for="appointment_date">Appointment Date</label>
+                </div>
+
+                <div>
+                    <input type="date" name="appointment_date" id="appointment_date" />
+                </div>
+
+            </div>
+
+            <div class="bloc-content">
+
+                <div class="bloc-form--label">
+                    <label for="appointment_vet">Attending vet</label>
+                </div>
+
+                <div>
+                    <select name="appointment_vet" id="appointment_vet">
+                        {% for vet in vets %}
+                        <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div>
+
+                <input type="submit" class="bloc-button--large-button bloc-button--type-dark" value="Create appointment" />
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -10,6 +10,7 @@ import repositories.note_repository as NR
 import repositories.pet_type_repository as PTR
 import repositories.perscribed_treatments_repository as perscribed
 import repositories.treatment_repository as TR
+import repositories.appointment_repository as AR
 
 # Create blueprint
 pets_blueprint = Blueprint('pets', __name__)
@@ -96,10 +97,15 @@ def view(id):
     notes_length = len(notes)
     treatments = perscribed.select_by_pet(pet.id)
     treatments_length = len(treatments)
+    appointments = AR.select_by_pet(id)
+    appointment_length = len(appointments)
+
+    for appointment in appointments:
+        appointment.days_until()
 
     pet_dob_string = pet.convert_dob_to_text()
 
-    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet_dob_string=pet_dob_string, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length)
+    return render_template('/pets/specific.html', title=pet.name + " - " + pet.pet_type.breed, pet_dob_string=pet_dob_string, pet=pet, notes=notes, notes_length=notes_length, treatments=treatments, treatments_length=treatments_length, appointments=appointments, appointment_length=appointment_length)
 
 # EDIT
 @pets_blueprint.route('/pets/<id>/edit')
@@ -193,3 +199,13 @@ def save_treatment(id):
     perscribed.save(perscribed_treatment)
 
     return redirect('/pets/'+id)
+
+# ADD APPOINTMENT
+@pets_blueprint.route('/pets/<id>/add-appointment')
+def add_appointment(id):
+    # Pull data from db
+    pet = PR.select(id)
+    vets = VR.select_all()
+
+    # Render html
+    return render_template('pets/add-appointment.html', title='Create appointment for '+pet.name, pet=pet, vets=vets)

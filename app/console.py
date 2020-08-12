@@ -7,6 +7,7 @@ from models.treatment import Treatment, PerscribedTreatment
 from models.vet import Vet
 from models.owner import Owner
 from models.note import Note
+from models.appointment import Appointment
 import repositories.pet_type_repository as PTR
 import repositories.owner_repository as OR
 import repositories.pet_repository as PR
@@ -14,6 +15,7 @@ import repositories.note_repository as NR
 import repositories.vet_repository as VR
 import repositories.perscribed_treatments_repository as perscribed
 import repositories.treatment_repository as TR
+import repositories.appointment_repository as AR
 
 # Drop the data from the tables
 NR.delete_all()
@@ -76,10 +78,15 @@ note_1 = Note('09/08/2020', 'Hudini is a stinky boy', pet_1, vet_1)
 NR.save(note_1)
 
 # Treatments
-# treatment_1 = Treatment('test', 10, 10, 'bla', 'bla')
-# TR.save(treatment_1)
+treatment_1 = Treatment('Worming tablets', 10, 2, 'dewormitroxin', 'Liquid Spray')
+TR.save(treatment_1)
 
-# perscribed_1 = PerscribedTreatment(pet_1, treatment_1)
-# perscribed.save(perscribed_1)
+treatment_2 = Treatment('Antibiotics - Stinkyitus', 50, 7, 'stinkicillin', 'Tablet')
+TR.save(treatment_2)
+
+# Test appointment
+
+appointment1 = Appointment('2020-09-12', 'Note text', vet_1, pet_3)
+AR.save(appointment1)
 
 pdb.set_trace()
