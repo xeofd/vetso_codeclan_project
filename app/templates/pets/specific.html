@@ -179,31 +179,31 @@
 
                     {% if appointment_length > 0 %}
 
-                    {% for appointment in appointments %}
+                        {% for appointment in appointments %}
 
-                    <div class="bloc-content--item">
+                        <div class="bloc-content--item">
 
-                        <div class="bloc-container--flex bloc-content--item-quick-data">
+                            <div class="bloc-container--flex bloc-content--item-quick-data">
 
-                            <p>Date of appointment: {{ appointment.date }}</p>
+                                <p>Date of appointment: {{ appointment.date }}</p>
 
-                            <p>Attending vet: {{ appointment.vet.first_name }} {{ appointment.vet.last_name }}</p>
+                                <p>Attending vet: {{ appointment.vet.first_name }} {{ appointment.vet.last_name }}</p>
 
-                            <p>Days untill appointment: {% if appointment.days_until_count < 0 %} This appointment has passed {% else %}{{ appointment.days_until_count }}{% endif %}</p>
+                                <p>Days untill appointment: {% if appointment.days_until_count < 0 %} This appointment has passed {% else %}{{ appointment.days_until_count }}{% endif %}</p>
+
+                            </div>
+
+                            <div class="bloc-content--item-data">
+
+                                <h3>Notes:</h3>
+
+                                <p>{{ appointment.note }}</p>
+
+                            </div>
 
                         </div>
 
-                        <div class="bloc-content--item-data">
-
-                            <h3>Notes:</h3>
-
-                            <p>{{ appointment.note }}</p>
-
-                        </div>
-
-                    </div>
-
-                    {% endfor %}
+                        {% endfor %}
 
                     {% else %}
 

@@ -53,7 +53,7 @@ def save_from_pet(id):
     pet = PR.select(id)
 
     # Create object for saving
-    appointment = Appointment(date, note, pet, vet, pet)
+    appointment = Appointment(date, note, vet, pet, pet)
     AR.save(appointment)
 
     # Redirect
