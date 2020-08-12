@@ -61,6 +61,7 @@ CREATE TABLE pet(
 CREATE TABLE appointment(
     id SERIAL PRIMARY KEY NOT NULL,
     date DATE NOT NULL,
+    note TEXT NOT NULL,
     vet_id INT REFERENCES vet(id) NOT NULL,
     pet_id INT REFERENCES pet(id) NOT NULL
 );
